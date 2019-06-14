@@ -44,7 +44,7 @@ const postAuthenticate = socket => {
         console.log('[server](message): %s', JSON.stringify(message));
         var client = clients.find(x => x.id === socket.id);
         var object = { content: message.content, user: { name: client.username}}
-        socket.emit('message', object);
+        io.emit('message', object);
     });
     socket.on("tickle", () => socket.emit("tickled"));
 };
